@@ -1,4 +1,4 @@
-import inquirer from "inquirer";
+const inquirer = require("inquirer");
 
 
 const teamManagerQuestions = [
@@ -24,7 +24,12 @@ const teamManagerQuestions = [
     }
 ];
 
-export const teamManagerPrompts = ()=>{
+/**
+ * Generates the Manager using user prompts
+ * @returns {*}
+ */
+const teamManagerPrompts = ()=>{
     return inquirer.prompt(teamManagerQuestions)
 };
 
+module.exports = teamManagerPrompts

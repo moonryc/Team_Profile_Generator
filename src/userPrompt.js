@@ -1,9 +1,12 @@
-import {teamManagerPrompts} from "./teamManagerPrompts.js";
-import {addEmployee} from "./addEmployee.js";
+const teamManagerPrompts = require("./teamManagerPrompts.js");
+const addEmployee = require("./addEmployee.js");
 const Manager =require("../lib/Manager.js");
 
-
-export const userPrompt = async () => {
+/**
+ * Generates the employees using user prompts and returns a promise that containes an array of different employee classes
+ * @returns {Promise<*|*[]>}
+ */
+const userPrompt = async () => {
     try {
         const answers = await teamManagerPrompts()
         return addEmployee([new Manager(answers.name, answers.id, answers.email, answers.officeNumber)])
@@ -12,3 +15,5 @@ export const userPrompt = async () => {
         return []
     }
 }
+
+module.exports = userPrompt

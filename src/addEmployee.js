@@ -1,4 +1,4 @@
-import inquirer from "inquirer";
+const inquirer = require("inquirer");
 const Engineer = require("../lib/Engineer.js");
 const Intern = require("../lib/Intern.js");
 
@@ -53,8 +53,17 @@ const generateEmployeeQuestions = [
 ]
 
 
-
-export const addEmployee = async (arrayOfEmployees) => {
+/**
+ * Asks the user if they wish to create more employees,
+ * if so prompts for creating a new employee are shown
+ * and the new employee is added to the arrayOfEmployee
+ * and the function runs again, until the user no longer
+ * wishes to add employees in which case arrayOfEmployees
+ * is returned
+ * @param arrayOfEmployees
+ * @returns {Promise<*>}
+ */
+const addEmployee = async (arrayOfEmployees) => {
 
     const anotherEmployee = await inquirer.prompt([{
         message:"Would you like To add another employee?",
@@ -69,8 +78,10 @@ export const addEmployee = async (arrayOfEmployees) => {
     const answers = await inquirer.prompt(generateEmployeeQuestions)
 
     if(answers.kind === "Engineer"){
-        return addEmployee([new Engineer(answers.name, answers.id, answers.github), ...arrayOfEmployees])
+        return addEmployee([new Engineer(answers.name, answers.id, answers.email,answers.github), ...arrayOfEmployees])
     }else{
-        return addEmployee([new Intern(answers.name, answers.id, answers.school), ...arrayOfEmployees])
+        return addEmployee([new Intern(answers.name, answers.id, answers.email,answers.school), ...arrayOfEmployees])
     }
 }
+
+module.exports = addEmployee
