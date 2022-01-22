@@ -1,26 +1,31 @@
 const inquirer = require("inquirer");
+const validateAnswer = require('./validateAnswer')
 
 
 const teamManagerQuestions = [
     {
         message:"Who is the team manager?",
         type:"input",
-        name:"name"
+        name:"name",
+        validate:validateAnswer
     },
     {
         message:"What is the team manager's employee ID?",
         type:"input",
-        name:"id"
+        name:"id",
+        validate:validateAnswer
     },
     {
         message:"What is the team manager's employee email address?",
         type:"input",
-        name:"email"
+        name:"email",
+        validate:validateAnswer
     },
     {
         message:"What is the team manager's employee office number?",
         type:"input",
-        name:"officeNumber"
+        name:"officeNumber",
+        validate:validateAnswer
     }
 ];
 

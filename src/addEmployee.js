@@ -1,34 +1,39 @@
 const inquirer = require("inquirer");
 const Engineer = require("../lib/Engineer.js");
 const Intern = require("../lib/Intern.js");
+const validateAnswer = require('./validateAnswer.js')
 
 const generateEmployeeQuestions = [
     {
         message:"What kind of employee would you like to add",
         type: "list",
         choices:["Engineer","Intern"],
-        name:"kind"
+        name:"kind",
+        validate:validateAnswer
     },
     {
         message: ({kind})=>{
             return `What is the ${kind}'s name?`
         },
         type:"input",
-        name:"name"
+        name:"name",
+        validate:validateAnswer
     },
     {
         message: ({kind})=>{
             return `What is the ${kind}'s employee id?`
         },
         type:"input",
-        name:"id"
+        name:"id",
+        validate:validateAnswer
     },
     {
         message: ({kind})=>{
             return `What is the ${kind}'s employee email?`
         },
         type:"input",
-        name:"email"
+        name:"email",
+        validate:validateAnswer
     },
     {
         message: ({kind})=>{
@@ -38,7 +43,8 @@ const generateEmployeeQuestions = [
         name:"github",
         when:({kind})=>{
             return kind === "Engineer"
-        }
+        },
+        validate:validateAnswer
     },
     {
         message: ({kind})=>{
@@ -48,7 +54,8 @@ const generateEmployeeQuestions = [
         name:"school",
         when:({kind})=>{
             return kind === "Intern"
-        }
+        },
+        validate:validateAnswer
     },
 ]
 
@@ -68,7 +75,7 @@ const addEmployee = async (arrayOfEmployees) => {
     const anotherEmployee = await inquirer.prompt([{
         message:"Would you like To add another employee?",
         type:'confirm',
-        name:"isConfirm"
+        name:"isConfirm",
     }])
 
     if(!anotherEmployee.isConfirm){
