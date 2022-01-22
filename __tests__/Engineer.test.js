@@ -1,4 +1,4 @@
-import Engineer from "../lib/Engineer.js";
+const Engineer = require("../lib/Engineer.js");
 
 const employeeName = "Billy"
 const employeedId = "0123456789abcdefghijk"

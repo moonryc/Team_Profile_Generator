@@ -1,4 +1,4 @@
-import Manager from "../lib/Manager.js";
+const Manager =require("../lib/Manager.js");
 
 const employeeName = "Billy"
 const employeedId = "0123456789abcdefghijk"

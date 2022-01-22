@@ -1,4 +1,4 @@
-import Intern from "../lib/Intern.js";
+const Intern = require("../lib/Intern.js");
 
 const employeeName = "Billy"
 const employeedId = "0123456789abcdefghijk"
